@@ -1,0 +1,19 @@
+{
+    "name": "jackal-cms/framework",
+    "description": "This is a core of Jackal CMS",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "Jackal\\Framework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Puleeno Nguyen",
+            "email": "puleeno@gmail.com"
+        }
+    ],
+    "require": {}
+}
