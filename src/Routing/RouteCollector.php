@@ -1,8 +1,8 @@
 <?php
 
-namespace Jackal\Jackal\Routing;
+namespace Quagga\Quagga\Routing;
 
-use Jackal\Jackal\Handlers\Strategies\RequestResponse;
+use Quagga\Quagga\Handlers\Strategies\RequestResponse;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\Interfaces\CallableResolverInterface;

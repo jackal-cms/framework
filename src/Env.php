@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 final class Env
 {

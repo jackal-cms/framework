@@ -1,8 +1,8 @@
 <?php
 
-namespace Jackal\Jackal\Hooks;
+namespace Quagga\Quagga\Hooks;
 
-use Jackal\Jackal\Hook;
+use Quagga\Quagga\Hook;
 
 class ActionHook extends Hook
 {

@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use ArrayAccess;
 use ArrayIterator;

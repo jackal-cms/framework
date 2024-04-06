@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Auth;
+namespace Quagga\Quagga\Auth;
 
 use App\Constracts\Auth\Factory as FactoryContract;
 
@@ -15,7 +15,7 @@ class AuthManager implements FactoryContract
      *
      * @param  string  $name
      * @param  array  $config
-     * @return \Jackal\Jackal\Auth\SessionGuard
+     * @return \Quagga\Quagga\Auth\SessionGuard
      */
     public function createSessionDriver($name, $config)
     {

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\HookConstract;
-use Jackal\Jackal\Hooks\ActionHook;
-use Jackal\Jackal\Hooks\FilterHook;
+use Quagga\Quagga\Hooks\ActionHook;
+use Quagga\Quagga\Hooks\FilterHook;
 use App\Exceptions\NotCallableException;
 use RuntimeException;
 
@@ -80,7 +80,7 @@ class HookManager
     /**
      * @param string $hookName
      *
-     * @return \Jackal\Jackal\Hooks\ActionHook[]
+     * @return \Quagga\Quagga\Hooks\ActionHook[]
      */
     public function getActionsByHook($hookName)
     {
@@ -93,7 +93,7 @@ class HookManager
     /**
      * @param string $hookName
      *
-     * @return \Jackal\Jackal\Hooks\FilterHook[]
+     * @return \Quagga\Quagga\Hooks\FilterHook[]
      */
     public function getFiltersByHook($hookName): array
     {

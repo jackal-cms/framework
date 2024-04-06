@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Auth;
+namespace Quagga\Quagga\Auth;
 
 class SessionGuard
 {

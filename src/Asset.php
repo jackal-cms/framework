@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\Assets\AssetConstract;
 use App\Constracts\Assets\AssetOptionsConstract;

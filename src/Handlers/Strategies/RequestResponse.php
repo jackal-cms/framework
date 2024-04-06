@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Handlers\Strategies;
+namespace Quagga\Quagga\Handlers\Strategies;
 
 use App\Exceptions\CanNotResolveParamException;
 use Closure;

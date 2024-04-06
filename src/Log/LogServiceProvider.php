@@ -1,9 +1,9 @@
 <?php
 
-namespace Jackal\Jackal\Log;
+namespace Quagga\Quagga\Log;
 
-use Jackal\Jackal\Helper;
-use Jackal\Jackal\Settings\SettingsInterface;
+use Quagga\Quagga\Helper;
+use Quagga\Quagga\Settings\SettingsInterface;
 use App\Http\Handlers\HttpErrorHandler;
 use App\Http\Handlers\ShutdownHandler;
 use App\Providers\ServiceProvider;

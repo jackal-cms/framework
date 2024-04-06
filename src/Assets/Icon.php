@@ -1,9 +1,9 @@
 <?php
 
-namespace Jackal\Jackal\Assets;
+namespace Quagga\Quagga\Assets;
 
 use App\Constracts\Assets\AssetIconConstract;
-use Jackal\Jackal\Asset;
+use Quagga\Quagga\Asset;
 
 class Icon extends Asset implements AssetIconConstract
 {

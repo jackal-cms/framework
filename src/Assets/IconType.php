@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Assets;
+namespace Quagga\Quagga\Assets;
 
 use App\Constracts\IconTypeConstract;
 

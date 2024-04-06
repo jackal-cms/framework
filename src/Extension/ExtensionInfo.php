@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Extension;
+namespace Quagga\Quagga\Extension;
 
 use App\Constracts\ExtensionConstract;
 

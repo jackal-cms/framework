@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Jackal\Jackal\Settings;
+namespace Quagga\Quagga\Settings;
 
 interface SettingsInterface
 {

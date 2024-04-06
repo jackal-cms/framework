@@ -1,16 +1,16 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\Assets\AssetConstract;
 use App\Constracts\AssetTypeEnum;
-use Jackal\Jackal\Assets\AssetUrl;
-use Jackal\Jackal\Assets\CascadingStyleSheets;
-use Jackal\Jackal\Assets\Font;
-use Jackal\Jackal\Assets\Icon;
-use Jackal\Jackal\Assets\JavaScript;
-use Jackal\Jackal\Assets\Script;
-use Jackal\Jackal\Assets\Style;
+use Quagga\Quagga\Assets\AssetUrl;
+use Quagga\Quagga\Assets\CascadingStyleSheets;
+use Quagga\Quagga\Assets\Font;
+use Quagga\Quagga\Assets\Icon;
+use Quagga\Quagga\Assets\JavaScript;
+use Quagga\Quagga\Assets\Script;
+use Quagga\Quagga\Assets\Style;
 use App\Exceptions\ClassNotFoundException;
 use App\Exceptions\InvalidAssetTypeException;
 use Psr\Container\ContainerInterface;

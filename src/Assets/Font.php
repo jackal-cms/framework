@@ -1,8 +1,8 @@
 <?php
 
-namespace Jackal\Jackal\Assets;
+namespace Quagga\Quagga\Assets;
 
-use Jackal\Jackal\ExternalAsset;
+use Quagga\Quagga\ExternalAsset;
 
 class Font extends ExternalAsset
 {

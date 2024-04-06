@@ -1,9 +1,9 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\Assets\AssetExternalConstract;
-use Jackal\Jackal\Assets\AssetUrl;
+use Quagga\Quagga\Assets\AssetUrl;
 
 abstract class ExternalAsset extends Asset implements AssetExternalConstract
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Jackal\Jackal\Assets;
+namespace Quagga\Quagga\Assets;
 
 use App\Constracts\Assets\AssetScriptConstract;
-use Jackal\Jackal\Env;
-use Jackal\Jackal\ExternalAsset;
-use Jackal\Jackal\HookManager;
+use Quagga\Quagga\Env;
+use Quagga\Quagga\ExternalAsset;
+use Quagga\Quagga\HookManager;
 use App\Traits\AssetScriptTrait;
 
 class JavaScript extends ExternalAsset implements AssetScriptConstract

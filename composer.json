@@ -1,12 +1,12 @@
 {
-    "name": "jackal-cms/framework",
-    "description": "This is a core of Jackal CMS",
+    "name": "quagga-cms/framework",
+    "description": "This is a core of Quagga CMS",
     "type": "library",
     "license": "MIT",
     "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
-            "Jackal\\Jackal\\": "src/"
+            "Quagga\\Quagga\\": "src/"
         }
     },
     "authors": [

@@ -1,10 +1,10 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\ExtensionConstract;
-use Jackal\Jackal\Extension\ExtensionInfo;
-use Jackal\Jackal\Extension\Resolver as ExtensionResolver;
+use Quagga\Quagga\Extension\ExtensionInfo;
+use Quagga\Quagga\Extension\Resolver as ExtensionResolver;
 use App\Exceptions\NotFoundExtensionException;
 use RuntimeException;
 
@@ -51,7 +51,7 @@ class ExtensionManager
     /**
      * Get all extensions
      *
-     * @return \Jackal\Jackal\Extension\ExtensionInfo[]
+     * @return \Quagga\Quagga\Extension\ExtensionInfo[]
      */
     public static function getAllExtensions(): array
     {

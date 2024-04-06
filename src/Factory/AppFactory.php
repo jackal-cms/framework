@@ -1,8 +1,8 @@
 <?php
 
-namespace Jackal\Jackal\Factory;
+namespace Quagga\Quagga\Factory;
 
-use Jackal\Jackal\Application;
+use Quagga\Quagga\Application;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Slim\Factory\AppFactory as SlimAppFactory;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Cookies;
+namespace Quagga\Quagga\Cookies;
 
 use App\Providers\ServiceProvider;
 

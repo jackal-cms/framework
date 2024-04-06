@@ -8,7 +8,7 @@
 
 declare(strict_types=1);
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -31,11 +31,11 @@ use Slim\Middleware\RoutingMiddleware;
 use Slim\Routing\RouteResolver;
 use Slim\Routing\RouteRunner;
 use App\Constracts\ApplicationConstract;
-use Jackal\Jackal\Routing\RouteCollector;
+use Quagga\Quagga\Routing\RouteCollector;
 use App\Http\ResponseEmitter\ResponseEmitter;
 use App\Providers\ServiceProvider;
-use Jackal\Jackal\Log\LogServiceProvider;
-use Jackal\Exceptions\InvalidApplicationException;
+use Quagga\Quagga\Log\LogServiceProvider;
+use Quagga\Exceptions\InvalidApplicationException;
 
 use function strtoupper;
 

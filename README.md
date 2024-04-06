@@ -1,2 +1,2 @@
 # framework
-This is a core of Jackal CMS
+This is a core of Quagga CMS

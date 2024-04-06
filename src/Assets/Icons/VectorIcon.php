@@ -1,8 +1,8 @@
 <?php
 
-namespace Jackal\Jackal\Assets\Icons;
+namespace Quagga\Quagga\Assets\Icons;
 
-use Jackal\Jackal\Assets\IconType;
+use Quagga\Quagga\Assets\IconType;
 
 class VectorIcon extends IconType
 {

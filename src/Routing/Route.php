@@ -1,9 +1,9 @@
 <?php
 
-namespace Jackal\Jackal\Routing;
+namespace Quagga\Quagga\Routing;
 
-use Jackal\Jackal\Handlers\Strategies\RequestResponse;
-use Jackal\Jackal\MiddlewareDispatcher;
+use Quagga\Quagga\Handlers\Strategies\RequestResponse;
+use Quagga\Quagga\MiddlewareDispatcher;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -63,7 +63,7 @@ class Route extends SlimRoute
             $callable = $this->callableResolver->resolve($this->callable);
         }
         /**
-         * @var \Jackal\Jackal\Handlers\Strategies\RequestResponse
+         * @var \Quagga\Quagga\Handlers\Strategies\RequestResponse
          */
         $strategy = $this->invocationStrategy;
 

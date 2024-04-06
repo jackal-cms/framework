@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\ExtensionConstract;
 use DI\Container;
@@ -23,7 +23,7 @@ abstract class Extension implements ExtensionConstract
     /**
      * Slim app
      *
-     * @var \Jackal\Jackal\Application
+     * @var \Quagga\Quagga\Application
      */
     protected $app;
 

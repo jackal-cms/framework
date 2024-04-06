@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\HookConstract;
 use App\Exceptions\NotCallableException;

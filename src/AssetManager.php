@@ -1,14 +1,14 @@
 <?php
 
-namespace Jackal\Jackal;
+namespace Quagga\Quagga;
 
 use App\Constracts\Assets\AssetConstract;
 use App\Constracts\AssetTypeEnum;
 use App\Constracts\Assets\AssetExternalConstract;
 use App\Constracts\Assets\AssetScriptConstract;
-use Jackal\Jackal\Assets\AssetOptions;
-use Jackal\Jackal\Assets\AssetUrl;
-use Jackal\Jackal\Assets\Bucket;
+use Quagga\Quagga\Assets\AssetOptions;
+use Quagga\Quagga\Assets\AssetUrl;
+use Quagga\Quagga\Assets\Bucket;
 use MJS\TopSort\Implementations\StringSort;
 
 final class AssetManager
@@ -86,7 +86,7 @@ final class AssetManager
         AssetOptions $assetOptions = null
     ): AssetConstract {
         /**
-         * @var \Jackal\Jackal\Assets\JavaScript
+         * @var \Quagga\Quagga\Assets\JavaScript
          */
         $asset = static::create($id, $url, $assetType, $deps, $version, $assetOptions);
         $instance = static::getInstance();

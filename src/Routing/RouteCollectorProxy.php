@@ -1,6 +1,6 @@
 <?php
 
-namespace Jackal\Jackal\Routing;
+namespace Quagga\Quagga\Routing;
 
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;

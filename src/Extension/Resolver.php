@@ -1,9 +1,9 @@
 <?php
 
-namespace Jackal\Jackal\Extension;
+namespace Quagga\Quagga\Extension;
 
 use App\Constracts\ExtensionConstract;
-use Jackal\Jackal\ExtensionManager;
+use Quagga\Quagga\ExtensionManager;
 use MJS\TopSort\Implementations\StringSort;
 
 class Resolver
@@ -13,7 +13,7 @@ class Resolver
 
 
     /**
-     * @var \Jackal\Jackal\Extension\ExtensionInfo[]
+     * @var \Quagga\Quagga\Extension\ExtensionInfo[]
      */
     protected $extensions = [];
     protected $resolvedExtensions = [];
@@ -66,7 +66,7 @@ class Resolver
         $extensions = [];
         foreach ($this->extensions as $extensionInfo) {
             /**
-             * @var \Jackal\Jackal\Extension
+             * @var \Quagga\Quagga\Extension
              */
             $extension = $extensionInfo->getExtension();
             if ($extension instanceof ExtensionConstract) {
@@ -81,7 +81,7 @@ class Resolver
     /**
      * Resolve the extensions
      *
-     * @return \Jackal\Jackal\Extension[]
+     * @return \Quagga\Quagga\Extension[]
      */
     public function resolve(): array
     {

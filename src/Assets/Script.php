@@ -1,11 +1,11 @@
 <?php
 
-namespace Jackal\Jackal\Assets;
+namespace Quagga\Quagga\Assets;
 
 use App\Constracts\Assets\AssetConstract;
 use App\Constracts\Assets\AssetHtmlConstract;
 use App\Constracts\Assets\AssetScriptConstract;
-use Jackal\Jackal\Asset;
+use Quagga\Quagga\Asset;
 use App\Traits\AssetScriptTrait;
 
 class Script extends Asset implements AssetHtmlConstract, AssetScriptConstract
