@@ -2,8 +2,8 @@
 
 namespace Quagga\Quagga\Assets;
 
-use App\Constracts\Assets\AssetConstract;
-use App\Constracts\AssetTypeEnum;
+use Quagga\Quagga\Constracts\Assets\AssetConstract;
+use Quagga\Quagga\Constracts\AssetTypeEnum;
 
 class Bucket
 {
@@ -59,7 +59,7 @@ class Bucket
     /**
      * @param boolean $isFooter
      *
-     * @return \App\Constracts\Assets\AssetConstract[]
+     * @return \Quagga\Quagga\Constracts\Assets\AssetConstract[]
      */
     public function getJs($isFooter = false, $enqueueScripts = null): array
     {
@@ -82,7 +82,7 @@ class Bucket
     /**
      * @param boolean $isFooter
      *
-     * @return \App\Constracts\Assets\AssetConstract[]
+     * @return \Quagga\Quagga\Constracts\Assets\AssetConstract[]
      */
     public function getInitScripts($isFooter = false, $enqueueScripts = null): array
     {
@@ -105,7 +105,7 @@ class Bucket
     /**
      * @param boolean $isFooter
      *
-     * @return \App\Constracts\Assets\AssetConstract[]
+     * @return \Quagga\Quagga\Constracts\Assets\AssetConstract[]
      */
     public function getExecuteScripts($isFooter = false, $enqueueScripts = null): array
     {

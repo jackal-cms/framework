@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Extension;
 
-use App\Constracts\ExtensionConstract;
+use Quagga\Quagga\Constracts\ExtensionConstract;
 
 class ExtensionInfo
 {
@@ -62,7 +62,7 @@ class ExtensionInfo
     {
         if ($this->isValid()) {
             /**
-             * @var \App\Constracts\ExtensionConstract
+             * @var \Quagga\Quagga\Constracts\ExtensionConstract
              */
             $extension = new $this->extensionClass();
             $extension->setExtensionDir($this->rootDir);

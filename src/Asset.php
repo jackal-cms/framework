@@ -2,9 +2,9 @@
 
 namespace Quagga\Quagga;
 
-use App\Constracts\Assets\AssetConstract;
-use App\Constracts\Assets\AssetOptionsConstract;
-use App\Constracts\AssetTypeEnum;
+use Quagga\Quagga\Constracts\Assets\AssetConstract;
+use Quagga\Quagga\Constracts\Assets\AssetOptionsConstract;
+use Quagga\Quagga\Constracts\AssetTypeEnum;
 use App\Traits\AssetBaseTrait;
 
 abstract class Asset implements AssetConstract

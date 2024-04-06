@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Auth;
 
-use App\Constracts\Auth\Factory as FactoryContract;
+use Quagga\Quagga\Constracts\Auth\Factory as FactoryContract;
 
 class AuthManager implements FactoryContract
 {

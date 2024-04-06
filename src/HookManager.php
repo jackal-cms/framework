@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga;
 
-use App\Constracts\HookConstract;
+use Quagga\Quagga\Constracts\HookConstract;
 use Quagga\Quagga\Hooks\ActionHook;
 use Quagga\Quagga\Hooks\FilterHook;
 use App\Exceptions\NotCallableException;
@@ -66,7 +66,7 @@ class HookManager
     /**
      * Undocumented function
      *
-     * @param \App\Constracts\HookConstract[] $hooks
+     * @param \Quagga\Quagga\Constracts\HookConstract[] $hooks
      * @return void
      */
     protected function sortHookByPriority(array $hooks)

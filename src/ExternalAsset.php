@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga;
 
-use App\Constracts\Assets\AssetExternalConstract;
+use Quagga\Quagga\Constracts\Assets\AssetExternalConstract;
 use Quagga\Quagga\Assets\AssetUrl;
 
 abstract class ExternalAsset extends Asset implements AssetExternalConstract

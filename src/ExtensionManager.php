@@ -2,14 +2,14 @@
 
 namespace Quagga\Quagga;
 
-use App\Constracts\ExtensionConstract;
+use Quagga\Quagga\Constracts\ExtensionConstract;
 use Quagga\Quagga\Extension\ExtensionInfo;
 use Quagga\Quagga\Extension\Resolver as ExtensionResolver;
 use App\Exceptions\NotFoundExtensionException;
 use RuntimeException;
 
 /**
- * @method static \App\Constracts\ExtensionConstract getExtension(string $extensionName, $throwException = true)
+ * @method static \Quagga\Quagga\Constracts\ExtensionConstract getExtension(string $extensionName, $throwException = true)
  * @method static boolean hasExtension($extensionName)
  * @method static void loadExtensions()
  */
@@ -128,7 +128,7 @@ class ExtensionManager
     }
 
     /**
-     * @return \App\Constracts\ExtensionConstract[]
+     * @return \Quagga\Quagga\Constracts\ExtensionConstract[]
      */
     public function getActiveExtensions()
     {
@@ -150,7 +150,14 @@ class ExtensionManager
         }
     }
 
-    public static function getExtension($extensionName, $throwException = true)
+    /**
+     * Undocumented function
+     *
+     * @param [type] $extensionName
+     * @param boolean $throwException
+     * @return void
+     */
+    public static function getExtension($extensionName, $throwException = true): ExtensionConstract
     {
         $instance = static::getInstance();
         if (isset($instance->activeExtensions[$extensionName])) {
