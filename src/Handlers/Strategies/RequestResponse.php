@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Handlers\Strategies;
 
-use App\Exceptions\CanNotResolveParamException;
+use Quagga\Quagga\Exceptions\CanNotResolveParamException;
 use Closure;
 use Laravel\SerializableClosure\Support\ReflectionClosure;
 use Psr\Container\ContainerInterface;

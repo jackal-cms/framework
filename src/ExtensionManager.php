@@ -5,7 +5,7 @@ namespace Quagga\Quagga;
 use Quagga\Quagga\Constracts\ExtensionConstract;
 use Quagga\Quagga\Extension\ExtensionInfo;
 use Quagga\Quagga\Extension\Resolver as ExtensionResolver;
-use App\Exceptions\NotFoundExtensionException;
+use Quagga\Quagga\Exceptions\NotFoundExtensionException;
 use RuntimeException;
 
 /**

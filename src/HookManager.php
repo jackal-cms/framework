@@ -5,7 +5,7 @@ namespace Quagga\Quagga;
 use Quagga\Quagga\Constracts\HookConstract;
 use Quagga\Quagga\Hooks\ActionHook;
 use Quagga\Quagga\Hooks\FilterHook;
-use App\Exceptions\NotCallableException;
+use Quagga\Quagga\Exceptions\NotCallableException;
 use RuntimeException;
 
 class HookManager

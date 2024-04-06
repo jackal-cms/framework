@@ -3,7 +3,7 @@
 namespace Quagga\Quagga;
 
 use Quagga\Quagga\Constracts\HookConstract;
-use App\Exceptions\NotCallableException;
+use Quagga\Quagga\Exceptions\NotCallableException;
 
 abstract class Hook implements HookConstract
 {

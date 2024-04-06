@@ -11,8 +11,8 @@ use Quagga\Quagga\Assets\Icon;
 use Quagga\Quagga\Assets\JavaScript;
 use Quagga\Quagga\Assets\Script;
 use Quagga\Quagga\Assets\Style;
-use App\Exceptions\ClassNotFoundException;
-use App\Exceptions\InvalidAssetTypeException;
+use Quagga\Quagga\Exceptions\ClassNotFoundException;
+use Quagga\Quagga\Exceptions\InvalidAssetTypeException;
 use Psr\Container\ContainerInterface;
 use ReflectionClass;
 
