@@ -15,5 +15,7 @@
             "email": "puleeno@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "polarising/bcrypt": "^1.0"
+    }
 }
