@@ -2,6 +2,7 @@
 
 namespace Quagga\Quagga;
 
+use Exception;
 use Quagga\Quagga\Constracts\Assets\AssetConstract;
 use Quagga\Quagga\Constracts\AssetTypeEnum;
 use Quagga\Quagga\Assets\AssetUrl;
@@ -14,6 +15,7 @@ use Quagga\Quagga\Assets\Style;
 use Quagga\Quagga\Exceptions\ClassNotFoundException;
 use Quagga\Quagga\Exceptions\InvalidAssetTypeException;
 use Psr\Container\ContainerInterface;
+use Quagga\Quagga\Settings\SettingsInterface;
 use ReflectionClass;
 
 final class Helper
@@ -169,5 +171,18 @@ final class Helper
         }
 
         return $ret;
+    }
+
+    public static function getConfig($name, $defaultValue=null) {
+        try {
+            $container = Application::getInstance()->getContainer();
+            $settings = $container->get(SettingsInterface::class);
+            if ($settings != null && $settings->get($name, $defaultValue)) {
+                return $settings->get($name, $defaultValue);
+            }
+        } catch (Exception $e) {
+            error_log($e->getMessage(), 4);
+        }
+        return $defaultValue;
     }
 }

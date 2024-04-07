@@ -20,8 +20,11 @@ class Settings implements SettingsInterface
         if (!is_array($ret)) {
             $ret = [];
         }
+        var_dump($settings);
 
         foreach ($settings as $key => $subSettings) {
+
+
             $settingKey = empty($prefix) ? $key : sprintf('%s.%s', $prefix, $key);
             if (is_array($subSettings)) {
                 $this->init($subSettings, $settingKey, $ret);
@@ -30,6 +33,8 @@ class Settings implements SettingsInterface
             }
         }
 
+
+        die;
         return $ret;
     }
 
