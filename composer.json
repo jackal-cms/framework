@@ -16,7 +16,15 @@
         }
     ],
     "require": {
+        "quagga/constracts": "*",
         "polarising/bcrypt": "^1.0",
-        "quagga/constracts": "*"
+        "marcj/topsort": "^2.0",
+        "monolog/monolog": "^2.x",
+        "opis/orm": "^1.0",
+        "php-di/php-di": "^7.0",
+        "phpseclib/phpseclib": "^3.0",
+        "slim/console": "^0.1.0",
+        "slim/psr7": "^1.6",
+        "quagga/slim": "^4.13",
     }
 }
