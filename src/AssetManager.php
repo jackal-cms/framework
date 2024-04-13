@@ -2,10 +2,10 @@
 
 namespace Quagga\Quagga;
 
-use Quagga\Quagga\Constracts\Assets\AssetConstract;
-use Quagga\Quagga\Constracts\AssetTypeEnum;
-use Quagga\Quagga\Constracts\Assets\AssetExternalConstract;
-use Quagga\Quagga\Constracts\Assets\AssetScriptConstract;
+use Quagga\Constracts\Assets\AssetConstract;
+use Quagga\Constracts\AssetTypeEnum;
+use Quagga\Constracts\Assets\AssetExternalConstract;
+use Quagga\Constracts\Assets\AssetScriptConstract;
 use Quagga\Quagga\Assets\AssetOptions;
 use Quagga\Quagga\Assets\AssetUrl;
 use Quagga\Quagga\Assets\Bucket;
@@ -148,7 +148,7 @@ final class AssetManager
     }
 
     /**
-     * @param \Quagga\Quagga\Constracts\Assets\AssetConstract[] $assets
+     * @param \Quagga\Constracts\Assets\AssetConstract[] $assets
      * @param AssetTypeEnum $assetType
      * @return void
      */

@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Assets;
 
-use Quagga\Quagga\Constracts\IconTypeConstract;
+use Quagga\Constracts\IconTypeConstract;
 
 abstract class IconType implements IconTypeConstract
 {

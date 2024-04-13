@@ -2,9 +2,9 @@
 
 namespace Quagga\Quagga\Assets;
 
-use Quagga\Quagga\Constracts\Assets\AssetConstract;
-use Quagga\Quagga\Constracts\Assets\AssetHtmlConstract;
-use Quagga\Quagga\Constracts\Assets\AssetScriptConstract;
+use Quagga\Constracts\Assets\AssetConstract;
+use Quagga\Constracts\Assets\AssetHtmlConstract;
+use Quagga\Constracts\Assets\AssetScriptConstract;
 use Quagga\Quagga\Asset;
 use App\Traits\AssetScriptTrait;
 
