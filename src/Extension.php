@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga;
 
-use Quagga\Constracts\ExtensionConstract;
+use Quagga\Contracts\ExtensionConstract;
 use DI\Container;
 use ReflectionClass;
 use Slim\App;

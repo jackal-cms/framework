@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Extension;
 
-use Quagga\Constracts\ExtensionConstract;
+use Quagga\Contracts\ExtensionConstract;
 use Quagga\Quagga\ExtensionManager;
 use MJS\TopSort\Implementations\StringSort;
 

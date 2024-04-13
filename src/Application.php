@@ -30,7 +30,7 @@ use Slim\Middleware\ErrorMiddleware;
 use Slim\Middleware\RoutingMiddleware;
 use Slim\Routing\RouteResolver;
 use Slim\Routing\RouteRunner;
-use Quagga\Constracts\ApplicationConstract;
+use Quagga\Contracts\ApplicationConstract;
 use Quagga\Quagga\Routing\RouteCollector;
 use App\Http\ResponseEmitter\ResponseEmitter;
 use App\Providers\ServiceProvider;

@@ -2,8 +2,8 @@
 
 namespace Quagga\Quagga;
 
-use Quagga\Constracts\Assets\AssetConstract;
-use Quagga\Constracts\AssetTypeEnum;
+use Quagga\Contracts\Assets\AssetConstract;
+use Quagga\Contracts\AssetTypeEnum;
 use Quagga\Quagga\Assets\AssetUrl;
 use Quagga\Quagga\Assets\CascadingStyleSheets;
 use Quagga\Quagga\Assets\Font;

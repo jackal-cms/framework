@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Assets;
 
-use Quagga\Constracts\Assets\AssetScriptConstract;
+use Quagga\Contracts\Assets\AssetScriptConstract;
 use Quagga\Quagga\Env;
 use Quagga\Quagga\ExternalAsset;
 use Quagga\Quagga\HookManager;
