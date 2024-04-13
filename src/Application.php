@@ -17,7 +17,6 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Log\LoggerInterface;
-use Tightenco\Collect\Support\Arr;
 use Slim\App;
 use Slim\CallableResolver;
 use Slim\Factory\ServerRequestCreatorFactory;
@@ -34,6 +33,7 @@ use Quagga\Contracts\ApplicationConstract;
 use Quagga\Quagga\Routing\RouteCollector;
 use App\Http\ResponseEmitter\ResponseEmitter;
 use App\Providers\ServiceProvider;
+use Illuminate\Support\Arr;
 use Quagga\Quagga\Log\LogServiceProvider;
 use Quagga\Exceptions\InvalidApplicationException;
 
