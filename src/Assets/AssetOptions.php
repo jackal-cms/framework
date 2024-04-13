@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Assets;
 
-use Quagga\Quagga\Constracts\Assets\AssetOptionsConstract;
+use Quagga\Contracts\Assets\AssetOptionsConstract;
 use Quagga\Quagga\Helper;
 
 class AssetOptions implements AssetOptionsConstract
