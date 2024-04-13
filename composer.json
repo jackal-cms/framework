@@ -23,6 +23,7 @@
         "php-di/php-di": "^7.0",
         "phpseclib/phpseclib": "^3.0",
         "polarising/bcrypt": "^1.0",
+        "quagga/collections": "*",
         "quagga/container": "*",
         "quagga/contracts": "*",
         "quagga/slim": "^4.13",
