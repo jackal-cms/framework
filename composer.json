@@ -21,7 +21,7 @@
         "quagga/constracts": "*",
         "polarising/bcrypt": "^1.0",
         "marcj/topsort": "^2.0",
-        "monolog/monolog": "^2.x",
+        "monolog/monolog": "^2.0",
         "opis/orm": "^1.0",
         "php-di/php-di": "^7.0",
         "phpseclib/phpseclib": "^3.0",
