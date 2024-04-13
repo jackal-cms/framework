@@ -16,6 +16,7 @@
         }
     ],
     "require": {
-        "polarising/bcrypt": "^1.0"
+        "polarising/bcrypt": "^1.0",
+        "quagga/constracts": "*"
     }
 }
