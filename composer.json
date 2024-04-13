@@ -27,6 +27,7 @@
         "phpseclib/phpseclib": "^3.0",
         "slim/console": "^0.1.0",
         "slim/psr7": "^1.6",
-        "quagga/slim": "^4.13"
+        "quagga/slim": "^4.13",
+        "quagga/container": "^8.0@dev"
     }
 }
