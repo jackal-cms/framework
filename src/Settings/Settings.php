@@ -20,8 +20,6 @@ class Settings implements SettingsInterface
         if (!is_array($ret)) {
             $ret = [];
         }
-        var_dump($settings);
-
         foreach ($settings as $key => $subSettings) {
 
 
@@ -33,8 +31,6 @@ class Settings implements SettingsInterface
             }
         }
 
-
-        die;
         return $ret;
     }
 
