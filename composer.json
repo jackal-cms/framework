@@ -16,18 +16,17 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.1 || ^8.2" ,
         "ext-json": "*",
-        "quagga/contracts": "*",
-        "polarising/bcrypt": "^1.0",
         "marcj/topsort": "^2.0",
         "monolog/monolog": "^2.0",
         "opis/orm": "^1.0",
         "php-di/php-di": "^7.0",
         "phpseclib/phpseclib": "^3.0",
-        "slim/console": "^0.1.0",
-        "slim/psr7": "^1.6",
+        "polarising/bcrypt": "^1.0",
+        "quagga/container": "*",
+        "quagga/contracts": "*",
         "quagga/slim": "^4.13",
-        "quagga/container": "^8.0@dev"
+        "slim/console": "^0.1.0",
+        "slim/psr7": "^1.6"
     }
 }
