@@ -173,7 +173,8 @@ final class Helper
         return $ret;
     }
 
-    public static function getConfig($name, $defaultValue=null) {
+    public static function getConfig($name, $defaultValue = null)
+    {
         try {
             $container = Application::getInstance()->getContainer();
             $settings = $container->get(SettingsInterface::class);

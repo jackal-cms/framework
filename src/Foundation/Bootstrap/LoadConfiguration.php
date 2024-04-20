@@ -1,5 +1,7 @@
 <?php
+
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
-class LoadConfiguration {
+class LoadConfiguration
+{
 }
