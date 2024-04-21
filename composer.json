@@ -7,7 +7,11 @@
     "autoload": {
         "psr-4": {
             "Quagga\\Quagga\\": "src/"
-        }
+        },
+        "files": [
+            "./src/Foundation/helpers.php",
+            "./src/Support/helpers.php"
+        ]
     },
     "authors": [
         {
@@ -29,6 +33,10 @@
         "quagga/slim": "^4.13",
         "slim/console": "^0.1.0",
         "slim/psr7": "^1.6",
-        "vlucas/valitron": "^1.4"
+        "vlucas/valitron": "^1.4",
+        "odan/session": "^5.1",
+        "symfony/http-foundation": "^5.4",
+        "symfony/finder": "^5.4",
+        "doctrine/inflector": "^2.0"
     }
 }

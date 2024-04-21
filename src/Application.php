@@ -388,4 +388,8 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
     public function terminate()
     {
     }
+
+    public function registerConfiguredProviders()
+    {
+    }
 }

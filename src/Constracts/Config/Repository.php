@@ -1,6 +1,6 @@
 <?php
 
-namespace Quagga\Quagga\Constracts\Config;
+namespace Quagga\Quagga\Contracts\Config;
 
 interface Repository
 {

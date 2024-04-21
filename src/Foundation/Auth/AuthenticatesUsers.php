@@ -15,7 +15,7 @@ trait AuthenticatesUsers
     {
         $params = $request->getQueryParams();
         $v = new Validator($params);
-        $v->rule('required', [$this->username(), 'password']);
+        $v->rule('required', [$this->username(), 'passwd']);
 
         if ($v->validate()) {
             return true;
@@ -37,17 +37,6 @@ trait AuthenticatesUsers
     {
         $this->validateLogin($request);
 
-        // If the class is using the ThrottlesLogins trait, we can automatically throttle
-        // the login attempts for this application. We'll key this by the username and
-        // the IP address of the client making these requests into this application.
-        if (
-            method_exists($this, 'hasTooManyLoginAttempts') &&
-            $this->hasTooManyLoginAttempts($request)
-        ) {
-            $this->fireLockoutEvent($request);
-
-            return $this->sendLockoutResponse($request);
-        }
 
         if ($this->attemptLogin($request)) {
             return $this->sendLoginResponse($request);
@@ -59,5 +48,33 @@ trait AuthenticatesUsers
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    protected function attemptLogin(Request $request)
+    {
+        return $this->guard()->attempt(
+            // $this->credentials($request), $request->filled('remember')
+        );
+    }
+
+    protected function sendLoginResponse(Request $request)
+    {
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
+    }
+
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => 'login_fail',
+        ]);
     }
 }

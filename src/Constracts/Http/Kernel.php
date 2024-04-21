@@ -1,6 +1,6 @@
 <?php
 
-namespace Quagga\Quagga\Constracts\Http;
+namespace Quagga\Contracts\Http;
 
 interface Kernel
 {
