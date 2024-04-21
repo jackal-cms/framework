@@ -32,7 +32,7 @@ use Slim\Routing\RouteRunner;
 use Quagga\Contracts\ApplicationConstract;
 use Quagga\Quagga\Routing\RouteCollector;
 use App\Http\ResponseEmitter\ResponseEmitter;
-use App\Providers\ServiceProvider;
+use Quagga\Quagga\Support\ServiceProvider;
 use Illuminate\Support\Arr;
 use Quagga\Quagga\Log\LogServiceProvider;
 use Quagga\Exceptions\InvalidApplicationException;
@@ -63,7 +63,7 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
 
 
     /**
-     * @var \App\Providers\ServiceProvider[]
+     * @var \Quagga\Quagga\Support\ServiceProvider[]
      */
     protected $serviceProviders = [];
 
@@ -274,7 +274,7 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
     /**
      * Get the registered service provider instances if any exist.
      *
-     * @param  \App\Providers\ServiceProvider|string  $provider
+     * @param  \Quagga\Quagga\Support\ServiceProvider|string  $provider
      * @return array
      */
     public function getProviders($provider)
@@ -290,7 +290,7 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
      * Resolve a service provider instance from the class name.
      *
      * @param  string  $provider
-     * @return \App\Providers\ServiceProvider
+     * @return \Quagga\Quagga\Support\ServiceProvider
      */
     public function resolveProvider($provider)
     {
@@ -300,7 +300,7 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
     /**
      * Mark the given provider as registered.
      *
-     * @param \App\Providers\ServiceProvider  $provider
+     * @param \Quagga\Quagga\Support\ServiceProvider  $provider
      * @return void
      */
     protected function markAsRegistered($provider)
@@ -313,8 +313,8 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
     /**
      * Get the registered service provider instance if it exists.
      *
-     * @param  \App\Providers\ServiceProvider|string  $provider
-     * @return \App\Providers\ServiceProvider|null
+     * @param  \Quagga\Quagga\Support\ServiceProvider|string  $provider
+     * @return \Quagga\Quagga\Support\ServiceProvider|null
      */
     public function getProvider($provider)
     {
@@ -325,7 +325,7 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
     /**
      * Boot the given service provider.
      *
-     * @param  \App\Providers\ServiceProvider  $provider
+     * @param  \Quagga\Quagga\Support\ServiceProvider  $provider
      * @return mixed
      */
     protected function bootProvider(ServiceProvider $provider)
@@ -338,9 +338,9 @@ class Application extends App implements RequestHandlerInterface, ApplicationCon
     /**
      * Register a service provider with the application.
      *
-     * @param  \App\Providers\ServiceProvider|string  $provider
+     * @param  \Quagga\Quagga\Support\ServiceProvider|string  $provider
      * @param  bool  $force
-     * @return \App\Providers\ServiceProvider
+     * @return \Quagga\Quagga\Support\ServiceProvider
      */
     public function register($provider, $force = false)
     {
