@@ -2,6 +2,11 @@
 
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
-class HandleExceptions
+use Quagga\Contracts\Bootstrap\Bootstraper;
+
+class HandleExceptions implements Bootstraper
 {
+    public function boot()
+    {
+    }
 }

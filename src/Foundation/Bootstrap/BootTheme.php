@@ -2,6 +2,11 @@
 
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
-class BootTheme
+use Quagga\Contracts\Bootstrap\Bootstraper;
+
+class BootTheme implements Bootstraper
 {
+    public function boot()
+    {
+    }
 }

@@ -4,7 +4,8 @@ namespace Quagga\Quagga\Foundation;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\Arr;
-use Quagga\Contracts\Foundation\ApplicationContract;
+use Quagga\Contracts\Bootstrap\Bootstraper;
+use Quagga\Contracts\Foundation\Application as ApplicationContract;
 use Quagga\Quagga\Events\EventServiceProvider;
 use Quagga\Quagga\Log\LogServiceProvider;
 use Quagga\Quagga\Routing\RoutingServiceProvider;
@@ -105,6 +106,33 @@ class Application extends Container implements ApplicationContract
         }
     }
 
+    public function registerConfiguredProviders()
+    {
+    }
+
+
+    /**
+     * Run the given array of bootstrap classes.
+     *
+     * @param  string[]  $bootstrappers
+     * @return void
+     */
+    public function bootstrapWith(array $bootstrappers)
+    {
+        $this->hasBeenBootstrapped = true;
+
+        foreach ($bootstrappers as $bootstrapper) {
+            if (!$bootstrapper instanceof Bootstraper) {
+                continue;
+            }
+            $this['events']->dispatch('bootstrapping: ' . $bootstrapper, [$this]);
+
+            $this->make($bootstrapper)->bootstrap($this);
+
+            $this['events']->dispatch('bootstrapped: ' . $bootstrapper, [$this]);
+        }
+    }
+
     /**
      * Set the base path for the application.
      *
@@ -167,12 +195,14 @@ class Application extends Container implements ApplicationContract
         // will spin through them and register them with the application, which
         // serves as a convenience layer while registering a lot of bindings.
         if (property_exists($provider, 'bindings')) {
+            /** @disregard P1014 because I'm has validate before calling */
             foreach ($provider->bindings as $key => $value) {
                 $this->bind($key, $value);
             }
         }
 
         if (property_exists($provider, 'singletons')) {
+            /** @disregard P1014 because I'm has validate before calling */
             foreach ($provider->singletons as $key => $value) {
                 $this->singleton($key, $value);
             }
@@ -291,5 +321,26 @@ class Application extends Container implements ApplicationContract
         foreach ($callbacks as $callback) {
             call_user_func($callback, $this);
         }
+    }
+
+    /**
+     * Determine if the application has been bootstrapped before.
+     *
+     * @return bool
+     */
+    public function hasBeenBootstrapped()
+    {
+        return $this->hasBeenBootstrapped;
+    }
+
+    /**
+     * Determine if middleware has been disabled for the application.
+     *
+     * @return bool
+     */
+    public function shouldSkipMiddleware()
+    {
+        return $this->bound('middleware.disable') &&
+               $this->make('middleware.disable') === true;
     }
 }

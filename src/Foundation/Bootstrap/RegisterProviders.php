@@ -2,7 +2,7 @@
 
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
-use Quagga\Contracts\Foundation\ApplicationContract as Application;
+use Quagga\Contracts\Foundation\Application as ApplicationContract;
 
 class RegisterProviders
 {
@@ -13,7 +13,7 @@ class RegisterProviders
      *
      * @return void
      */
-    public function bootstrap(Application $app)
+    public function bootstrap(ApplicationContract $app)
     {
         $app->registerConfiguredProviders();
     }

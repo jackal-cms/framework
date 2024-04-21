@@ -2,6 +2,11 @@
 
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
-class LoadConfiguration
+use Quagga\Contracts\Bootstrap\Bootstraper;
+
+class LoadConfiguration implements Bootstraper
 {
+    public function boot()
+    {
+    }
 }

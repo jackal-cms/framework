@@ -4,10 +4,11 @@ namespace Quagga\Quagga\Foundation\Http;
 
 use Exception;
 use Quagga\Contracts\Debug\ExceptionHandler;
-use Quagga\Contracts\Foundation\ApplicationContract;
+use Quagga\Contracts\Foundation\Application as ApplicationContract;
 use Quagga\Contracts\Http\Kernel as HttpKernel;
+use Quagga\Quagga\Pipeline\Pipeline;
+use Quagga\Quagga\Support\Facades\Facade;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
-use Symfony\Component\ErrorHandler\Error\FatalError;
 use Throwable;
 
 class Kernel implements HttpKernel
@@ -18,6 +19,34 @@ class Kernel implements HttpKernel
      * @var \Quagga\Contracts\Foundation\ApplicationContract
      */
     protected $app;
+
+    /**
+     * The router instance.
+     *
+     * @var \Illuminate\Routing\Router
+     */
+    protected $router;
+
+    /**
+     * The application's middleware stack.
+     *
+     * @var array
+     */
+    protected $middleware = [];
+
+    /**
+     * The application's route middleware groups.
+     *
+     * @var array
+     */
+    protected $middlewareGroups = [];
+
+    /**
+     * The application's route middleware.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [];
 
     protected $bootstrappers = [
         \Quagga\Quagga\Foundation\Bootstrap\LoadEnvironmentVariables::class,
@@ -64,12 +93,15 @@ class Kernel implements HttpKernel
         try {
             $request->enableHttpMethodParameterOverride();
 
+
             $response = $this->sendRequestThroughRouter($request);
         } catch (Exception $e) {
             $this->reportException($e);
 
             $response = $this->renderException($request, $e);
         } catch (Throwable $e) {
+            var_dump($e);
+            die('haha');
             $this->reportException($e = new FatalThrowableError($e));
 
             $response = $this->renderException($request, $e);
@@ -80,6 +112,62 @@ class Kernel implements HttpKernel
         );
 
         return $response;
+    }
+
+    /**
+     * Send the given request through the middleware / router.
+     *
+     * @param  \Quagga\Quagga\Http\Request  $request
+     * @return \Quagga\Quagga\Http\Response
+     */
+    protected function sendRequestThroughRouter($request)
+    {
+        $this->app->instance('request', $request);
+
+        Facade::clearResolvedInstance('request');
+
+        $this->bootstrap();
+
+        return (new Pipeline($this->app))
+                    ->send($request)
+                    ->through($this->app->shouldSkipMiddleware() ? [] : $this->middleware)
+                    ->then($this->dispatchToRouter());
+    }
+
+    /**
+     * Get the route dispatcher callback.
+     *
+     * @return \Closure
+     */
+    protected function dispatchToRouter()
+    {
+        return function ($request) {
+            $this->app->instance('request', $request);
+
+            return $this->router->dispatch($request);
+        };
+    }
+
+    /**
+     * Bootstrap the application for HTTP requests.
+     *
+     * @return void
+     */
+    public function bootstrap()
+    {
+        if (! $this->app->hasBeenBootstrapped()) {
+            $this->app->bootstrapWith($this->bootstrappers());
+        }
+    }
+
+    /**
+     * Get the bootstrap classes for the application.
+     *
+     * @return array
+     */
+    protected function bootstrappers()
+    {
+        return $this->bootstrappers;
     }
 
     /**
