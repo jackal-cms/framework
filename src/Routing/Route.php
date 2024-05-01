@@ -3,7 +3,6 @@
 namespace Quagga\Quagga\Routing;
 
 use Quagga\Quagga\Handlers\Strategies\RequestResponse;
-use Quagga\Quagga\MiddlewareDispatcher;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -14,6 +13,7 @@ use Slim\Handlers\Strategies\RequestHandler;
 use Slim\Interfaces\AdvancedCallableResolverInterface;
 use Slim\Interfaces\CallableResolverInterface;
 use Slim\Interfaces\InvocationStrategyInterface;
+use Slim\MiddlewareDispatcher;
 use Slim\Routing\Route as SlimRoute;
 
 class Route extends SlimRoute
