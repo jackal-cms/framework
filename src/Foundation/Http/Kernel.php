@@ -6,6 +6,7 @@ use Exception;
 use Quagga\Contracts\Debug\ExceptionHandler;
 use Quagga\Contracts\Foundation\Application as ApplicationContract;
 use Quagga\Contracts\Http\Kernel as HttpKernel;
+use Quagga\Quagga\Http\Response;
 use Quagga\Quagga\Pipeline\Pipeline;
 use Quagga\Quagga\Support\Facades\Facade;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
@@ -16,7 +17,7 @@ class Kernel implements HttpKernel
     /**
      * The application implementation.
      *
-     * @var \Quagga\Contracts\Foundation\ApplicationContract|null
+     * @var \Quagga\Contracts\Foundation\Application|null
      */
     protected $app;
 
@@ -143,6 +144,8 @@ class Kernel implements HttpKernel
     {
         return function ($request) {
             $this->app->instance('request', $request);
+
+            return Response::create('test');
 
             return $this->slimDispatcher->handle($request);
         };
