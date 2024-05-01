@@ -4,7 +4,6 @@ namespace Quagga\Quagga\Foundation;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\Arr;
-use Quagga\Contracts\Bootstrap\Bootstraper;
 use Quagga\Contracts\Foundation\Application as ApplicationContract;
 use Quagga\Quagga\Events\EventServiceProvider;
 use Quagga\Quagga\Log\LogServiceProvider;
@@ -122,9 +121,6 @@ class Application extends Container implements ApplicationContract
         $this->hasBeenBootstrapped = true;
 
         foreach ($bootstrappers as $bootstrapper) {
-            if (!$bootstrapper instanceof Bootstraper) {
-                continue;
-            }
             $this['events']->dispatch('bootstrapping: ' . $bootstrapper, [$this]);
 
             $this->make($bootstrapper)->bootstrap($this);

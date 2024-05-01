@@ -2,11 +2,9 @@
 
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
-use Quagga\Contracts\Bootstrap\Bootstraper;
-
-class RegisterFacades implements Bootstraper
+class RegisterFacades
 {
-    public function boot()
+    public function bootstrap()
     {
     }
 }
