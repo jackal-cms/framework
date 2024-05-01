@@ -23,9 +23,10 @@ class Kernel implements HttpKernel
     /**
      * The router instance.
      *
-     * @var \Illuminate\Routing\Router
+     * @var \Slim\Interfaces\MiddlewareDispatcherInterface;
+     *
      */
-    protected $router;
+    protected $slimDispatcher;
 
     /**
      * The application's middleware stack.
@@ -86,7 +87,7 @@ class Kernel implements HttpKernel
      * Handle an incoming HTTP request.
      *
      * @param  \Quagga\Quagga\Http\Request  $request
-     * @return \Quagga\Quagga\Http\Response
+     * @return \Quagga\Quagga\Http\Response|\Quagga\Quagga\Http\JsonResponse
      */
     public function handle($request)
     {
@@ -144,7 +145,7 @@ class Kernel implements HttpKernel
         return function ($request) {
             $this->app->instance('request', $request);
 
-            return $this->router->dispatch($request);
+            return $this->slimDispatcher->dispatch($request);
         };
     }
 
