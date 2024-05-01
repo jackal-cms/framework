@@ -16,7 +16,7 @@ class Kernel implements HttpKernel
     /**
      * The application implementation.
      *
-     * @var \Quagga\Contracts\Foundation\ApplicationContract
+     * @var \Quagga\Contracts\Foundation\ApplicationContract|null
      */
     protected $app;
 
@@ -94,7 +94,6 @@ class Kernel implements HttpKernel
         try {
             $request->enableHttpMethodParameterOverride();
 
-
             $response = $this->sendRequestThroughRouter($request);
         } catch (Exception $e) {
             $this->reportException($e);
@@ -145,7 +144,7 @@ class Kernel implements HttpKernel
         return function ($request) {
             $this->app->instance('request', $request);
 
-            return $this->slimDispatcher->dispatch($request);
+            return $this->slimDispatcher->handle($request);
         };
     }
 
@@ -185,7 +184,7 @@ class Kernel implements HttpKernel
     /**
      * Render the exception to a response.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Quagga\Quagga\Http\Request  $request
      * @param  \Exception  $e
      * @return \Symfony\Component\HttpFoundation\Response
      */
