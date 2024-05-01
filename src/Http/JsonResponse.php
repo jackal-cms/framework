@@ -2,10 +2,10 @@
 
 namespace Quagga\Quagga\Http;
 
-use Psr\Http\Message\ResponseInterface;
+use Quagga\Contracts\Http\JsonResponse as ResponseContract;
 use Symfony\Component\HttpFoundation\JsonResponse as BaseJsonResponse;
 
-class JsonResponse extends BaseJsonResponse implements ResponseInterface
+class JsonResponse extends BaseJsonResponse implements ResponseContract
 {
     use PsrResponse;
 

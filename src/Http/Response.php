@@ -2,10 +2,10 @@
 
 namespace Quagga\Quagga\Http;
 
-use Psr\Http\Message\ResponseInterface;
+use Quagga\Contracts\Http\Response as ResponseContract;
 use Symfony\Component\HttpFoundation\Response as BaseResponse;
 
-class Response extends BaseResponse implements ResponseInterface
+class Response extends BaseResponse implements ResponseContract
 {
     use PsrResponse;
 }
