@@ -2,9 +2,12 @@
 
 namespace Quagga\Quagga\Foundation\Bootstrap;
 
+use Quagga\Contracts\Foundation\Application;
+
 class BootProviders
 {
-    public function bootstrap()
+    public function bootstrap(Application $app)
     {
+        $app->boot();
     }
 }

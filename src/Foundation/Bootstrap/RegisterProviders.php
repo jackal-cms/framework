@@ -9,7 +9,7 @@ class RegisterProviders
     /**
      * Bootstrap the given application.
      *
-     * @param \Quagga\Contracts\Foundation\ApplicationContract $app
+     * @param \Quagga\Contracts\Foundation\Application $app
      *
      * @return void
      */

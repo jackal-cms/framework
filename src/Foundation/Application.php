@@ -96,7 +96,9 @@ class Application extends Container implements ApplicationContract
     {
         foreach (
             [
-            'app'                  => [self::class, \Illuminate\Contracts\Container\Container::class, ApplicationContract::class, \Psr\Container\ContainerInterface::class],
+                'app'                  => [self::class, \Illuminate\Contracts\Container\Container::class, ApplicationContract::class, \Psr\Container\ContainerInterface::class],
+                'request'              => [\Quagga\Quagga\Http\Request::class, \Symfony\Component\HttpFoundation\Request::class, \Quagga\Contracts\Http\Request::class],
+                'session'              => [\Quagga\Quagga\Session\SessionManager::class],
             ] as $key => $aliases
         ) {
             foreach ($aliases as $alias) {
@@ -304,6 +306,31 @@ class Application extends Container implements ApplicationContract
         if ($this->isBooted()) {
             $this->fireAppCallbacks([$callback]);
         }
+    }
+
+    /**
+     * Boot the application's service providers.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        if ($this->isBooted()) {
+            return;
+        }
+
+        // Once the application has booted we will also fire some "booted" callbacks
+        // for any listeners that need to do work after this initial booting gets
+        // finished. This is useful when ordering the boot-up processes we run.
+        $this->fireAppCallbacks($this->bootingCallbacks);
+
+        array_walk($this->serviceProviders, function ($p) {
+            $this->bootProvider($p);
+        });
+
+        $this->booted = true;
+
+        $this->fireAppCallbacks($this->bootedCallbacks);
     }
 
     /**

@@ -12,7 +12,7 @@ abstract class Facade
     /**
      * The application instance being facaded.
      *
-     * @var \Quagga\Contracts\Foundation\ApplicationContract
+     * @var \Quagga\Contracts\Foundation\Application
      */
     protected static $app;
 

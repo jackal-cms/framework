@@ -9,6 +9,7 @@ use Quagga\Contracts\Http\Kernel as HttpKernel;
 use Quagga\Quagga\Http\Response;
 use Quagga\Quagga\Pipeline\Pipeline;
 use Quagga\Quagga\Support\Facades\Facade;
+use Slim\Interfaces\MiddlewareDispatcherInterface;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
 
@@ -76,7 +77,8 @@ class Kernel implements HttpKernel
             define('ARTISAN_BINARY', 'artisan');
         }
 
-        $this->app = $app;
+        $this->app            = $app;
+        // $this->slimDispatcher = $middlewareDispatcher;
 
         $this->app->booted(function () {
             // $this->defineConsoleSchedule();
@@ -145,7 +147,7 @@ class Kernel implements HttpKernel
         return function ($request) {
             $this->app->instance('request', $request);
 
-            return Response::create('test');
+            return new Response('test');
 
             return $this->slimDispatcher->handle($request);
         };
