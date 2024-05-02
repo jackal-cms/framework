@@ -9,7 +9,6 @@ use Quagga\Contracts\Http\Kernel as HttpKernel;
 use Quagga\Quagga\Http\Response;
 use Quagga\Quagga\Pipeline\Pipeline;
 use Quagga\Quagga\Support\Facades\Facade;
-use Slim\Interfaces\MiddlewareDispatcherInterface;
 use Symfony\Component\Debug\Exception\FatalThrowableError;
 use Throwable;
 

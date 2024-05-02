@@ -4,11 +4,15 @@ namespace Quagga\Quagga\Foundation;
 
 use Illuminate\Container\Container;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Quagga\Contracts\Foundation\Application as ApplicationContract;
 use Quagga\Quagga\Events\EventServiceProvider;
+use Quagga\Quagga\Filesystem\Filesystem;
 use Quagga\Quagga\Log\LogServiceProvider;
 use Quagga\Quagga\Routing\RoutingServiceProvider;
 use Quagga\Quagga\Support\ServiceProvider;
+use Quagga\Quagga\Support\Str;
+use Throwable;
 
 class Application extends Container implements ApplicationContract
 {
@@ -18,6 +22,13 @@ class Application extends Container implements ApplicationContract
      * @var string
      */
     protected $basePath;
+
+    /**
+     * The custom application path defined by the developer.
+     *
+     * @var string
+     */
+    protected $appPath;
 
     /**
      * Indicates if the application has been bootstrapped before.
@@ -61,6 +72,13 @@ class Application extends Container implements ApplicationContract
      */
     protected $loadedProviders = [];
 
+    /**
+     * The deferred services and their providers.
+     *
+     * @var array
+     */
+    protected $deferredServices = [];
+
 
     public function __construct($basePath = null)
     {
@@ -82,6 +100,12 @@ class Application extends Container implements ApplicationContract
         static::setInstance($this);
         $this->instance('app', $this);
         $this->instance(Container::class, $this);
+
+        $this->instance(PackageManifest::class, new PackageManifest(
+            new Filesystem(),
+            $this->basePath(),
+            $this->getCachedServicesPath()
+        ));
     }
 
 
@@ -109,6 +133,42 @@ class Application extends Container implements ApplicationContract
 
     public function registerConfiguredProviders()
     {
+        try {
+            $providers = Collection::make([
+            ])
+            ->partition(function ($provider) {
+                return Str::startsWith($provider, 'Quagga\\');
+            });
+
+
+            $providers->splice(1, 0, [$this->make(PackageManifest::class)->providers()]);
+
+            (new ProviderRepository($this, new Filesystem(), $this->getCachedServicesPath()))
+                    ->load($providers->collapse()->toArray());
+        } catch (Throwable $e) {
+            var_dump($e);
+            die;
+        }
+    }
+
+    /**
+     * Get the path to the cached services.php file.
+     *
+     * @return string
+     */
+    public function getCachedServicesPath()
+    {
+        return $_ENV['APP_SERVICES_CACHE'] ?? $this->bootstrapPath() . '/cache/services.php';
+    }
+
+    /**
+     * Get the path to the cached packages.php file.
+     *
+     * @return string
+     */
+    public function getCachedPackagesPath()
+    {
+        return $_ENV['APP_PACKAGES_CACHE'] ?? $this->bootstrapPath() . '/cache/packages.php';
     }
 
 
@@ -153,8 +213,23 @@ class Application extends Container implements ApplicationContract
      */
     protected function bindPathsInContainer()
     {
+        $this->instance('path', $this->path());
         $this->instance('path.base', $this->basePath());
     }
+
+    /**
+     * Get the path to the application "app" directory.
+     *
+     * @param  string  $path
+     * @return string
+     */
+    public function path($path = '')
+    {
+        $appPath = $this->appPath ?: $this->basePath . DIRECTORY_SEPARATOR . 'app';
+
+        return $appPath . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+
 
     /**
      * Get the base path of the Laravel installation.
@@ -165,6 +240,17 @@ class Application extends Container implements ApplicationContract
     public function basePath($path = '')
     {
         return $this->basePath . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+    }
+
+    /**
+     * Get the path to the bootstrap directory.
+     *
+     * @param  string  $path Optionally, a path to append to the bootstrap path
+     * @return string
+     */
+    public function bootstrapPath($path = '')
+    {
+        return $this->basePath . DIRECTORY_SEPARATOR . 'bootstrap' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
 
     /**
@@ -365,5 +451,37 @@ class Application extends Container implements ApplicationContract
     {
         return $this->bound('middleware.disable') &&
                $this->make('middleware.disable') === true;
+    }
+
+    /**
+     * Get the application's deferred services.
+     *
+     * @return array
+     */
+    public function getDeferredServices()
+    {
+        return $this->deferredServices;
+    }
+
+    /**
+     * Set the application's deferred services.
+     *
+     * @param  array  $services
+     * @return void
+     */
+    public function setDeferredServices(array $services)
+    {
+        $this->deferredServices = $services;
+    }
+
+    /**
+     * Add an array of services to the application's deferred services.
+     *
+     * @param  array  $services
+     * @return void
+     */
+    public function addDeferredServices(array $services)
+    {
+        $this->deferredServices = array_merge($this->deferredServices, $services);
     }
 }
