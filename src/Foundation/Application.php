@@ -2,6 +2,7 @@
 
 namespace Quagga\Quagga\Foundation;
 
+use Closure;
 use Illuminate\Container\Container;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
@@ -12,7 +13,6 @@ use Quagga\Quagga\Log\LogServiceProvider;
 use Quagga\Quagga\Routing\RoutingServiceProvider;
 use Quagga\Quagga\Support\ServiceProvider;
 use Quagga\Quagga\Support\Str;
-use Throwable;
 
 class Application extends Container implements ApplicationContract
 {
@@ -131,24 +131,31 @@ class Application extends Container implements ApplicationContract
         }
     }
 
+    /**
+     * Detect the application's current environment.
+     *
+     * @param  \Closure  $callback
+     * @return string
+     */
+    public function detectEnvironment(Closure $callback)
+    {
+        $args = $_SERVER['argv'] ?? null;
+
+        return $this['env'] = (new EnvironmentDetector)->detect($callback, $args);
+    }
+
     public function registerConfiguredProviders()
     {
-        try {
-            $providers = Collection::make([
-            ])
-            ->partition(function ($provider) {
-                return Str::startsWith($provider, 'Quagga\\');
-            });
+        $providers = Collection::make($this->config['app.providers'])
+        ->partition(function ($provider) {
+            return Str::startsWith($provider, 'Quagga\\');
+        });
 
 
-            $providers->splice(1, 0, [$this->make(PackageManifest::class)->providers()]);
+        $providers->splice(1, 0, [$this->make(PackageManifest::class)->providers()]);
 
-            (new ProviderRepository($this, new Filesystem(), $this->getCachedServicesPath()))
-                    ->load($providers->collapse()->toArray());
-        } catch (Throwable $e) {
-            var_dump($e);
-            die;
-        }
+        (new ProviderRepository($this, new Filesystem(), $this->getCachedServicesPath()))
+            ->load($providers->collapse()->toArray());
     }
 
     /**
@@ -169,6 +176,26 @@ class Application extends Container implements ApplicationContract
     public function getCachedPackagesPath()
     {
         return $_ENV['APP_PACKAGES_CACHE'] ?? $this->bootstrapPath() . '/cache/packages.php';
+    }
+
+    /**
+     * Determine if the application configuration is cached.
+     *
+     * @return bool
+     */
+    public function configurationIsCached()
+    {
+        return file_exists($this->getCachedConfigPath());
+    }
+
+    /**
+     * Get the path to the configuration cache file.
+     *
+     * @return string
+     */
+    public function getCachedConfigPath()
+    {
+        return $_ENV['APP_CONFIG_CACHE'] ?? $this->bootstrapPath().'/cache/config.php';
     }
 
 
@@ -252,6 +279,19 @@ class Application extends Container implements ApplicationContract
     {
         return $this->basePath . DIRECTORY_SEPARATOR . 'bootstrap' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
     }
+
+
+    /**
+     * Get the path to the application configuration files.
+     *
+     * @param  string  $path Optionally, a path to append to the config path
+     * @return string
+     */
+    public function configPath($path = '')
+    {
+        return $this->basePath.DIRECTORY_SEPARATOR.'config'.($path ? DIRECTORY_SEPARATOR.$path : $path);
+    }
+
 
     /**
      * Register a service provider with the application.
